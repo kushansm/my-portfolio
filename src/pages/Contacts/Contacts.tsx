@@ -1,49 +1,89 @@
 import './Contacts.css';
+import { FC } from "react";
+import { Canvas } from "@react-three/fiber";
+import Particles from "../Skills/Particles.tsx";
+import Earth from "./Earth";
+import * as THREE from 'three';
 
-function Contacts() {
+const Contacts: FC = () => {
     return (
-        <div className="p-6">
-            <h1 className="text-3xl font-bold underline flex justify-center mb-8">
-                Contacts
-            </h1>
-
-            <div className="flex flex-col items-center gap-6">
-
-                {/* Contact Information */}
-                <div className="text-gray-700">
-                    <h2 className="font-bold text-lg mb-2">Email</h2>
-                    <p className="text-sm">kushansm@example.com</p>
+        <div className="relative min-h-screen overflow-hidden">
+            {/* Background Effect */}
+            <div className="letter-glitch-container absolute inset-0 -z-10">
+                <div
+                    style={{
+                        width: '100vw',
+                        height: '100vh',
+                        position: 'relative',
+                        backgroundColor: '#090909',
+                        overflow: 'hidden',
+                        padding: '2rem',
+                    }}
+                >
+                    <Particles
+                        particleColors={['#ffffff', '#ffffff']}
+                        particleCount={200}
+                        particleSpread={10}
+                        speed={0.1}
+                        particleBaseSize={100}
+                        moveParticlesOnHover={true}
+                        alphaParticles={false}
+                        disableRotation={false}
+                    />
                 </div>
-
-                <div className="text-gray-700">
-                    <h2 className="font-bold text-lg mb-2">Phone</h2>
-                    <p className="text-sm">+94 777 123 456</p>
-                </div>
-
-                <div className="text-gray-700">
-                    <h2 className="font-bold text-lg mb-2">LinkedIn</h2>
-                    <p className="text-sm">
-                        <a href="https://www.linkedin.com/in/kushansm/" target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                            linkedin.com/in/kushansm
-                        </a>
-                    </p>
-                </div>
-
-                <div className="text-gray-700">
-                    <h2 className="font-bold text-lg mb-2">GitHub</h2>
-                    <p className="text-sm">
-                        <a href="https://github.com/kushansm" target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                            github.com/kushansm
-                        </a>
-                    </p>
-                </div>
-
-                <div className="text-gray-700">
-                    <h2 className="font-bold text-lg mb-2">Location</h2>
-                    <p className="text-sm">Colombo, Sri Lanka</p>
-                </div>
-
             </div>
+
+            {/* Main Content */}
+            <div className="p-8 flex flex-col md:flex-row items-center justify-center gap-12 min-h-[calc(100vh-60px)]">
+                {/* Contact Form */}
+                <div className="w-full max-w-md bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-md">
+                    <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Send Me a Message</h2>
+                    <form className="flex flex-col gap-4">
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                        <input
+                            type="email"
+                            placeholder="Your Email"
+                            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                        <textarea
+                            placeholder="Your Message"
+                            rows={5}
+                            className="p-2 rounded border border-gray-300 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        ></textarea>
+                        <button
+                            type="submit"
+                            className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                        >
+                            Send
+                        </button>
+                    </form>
+                </div>
+
+                {/* 3D Earth Scene */}
+                <div className="w-full max-w-md h-[400px]">
+                    <Canvas
+                        camera={{ position: [2, 0, 3], fov: 45 }}
+                        gl={{
+                            toneMapping: THREE.ACESFilmicToneMapping,
+                            outputColorSpace: THREE.SRGBColorSpace,
+                        }}
+                    >
+                        <Earth />
+                    </Canvas>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <footer className="text-center text-white bg-black/70 py-4 text-sm mt-6">
+                Developed By Kushan Siriwardhana ©
+            </footer>
         </div>
     );
 }

@@ -1,92 +1,108 @@
 import './Skills.css';
+import { useRef } from 'react';
+import Particles from './Particles';
+
+function TechIcon({ src, alt }: { src: string; alt: string }) {
+    const iconRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        const icon = iconRef.current;
+        if (!icon) return;
+        const rect = icon.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        const rotateX = (-y / 10).toFixed(2);
+        const rotateY = (x / 10).toFixed(2);
+
+        icon.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
+    };
+
+    const handleMouseLeave = () => {
+        const icon = iconRef.current;
+        if (!icon) return;
+        icon.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+    };
+
+    return (
+        <div
+            className="tech-icon-container animate-zoom"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            ref={iconRef}
+        >
+            <img src={src} alt={alt} className="tech-icon" />
+        </div>
+    );
+}
 
 function Skills() {
     return (
-        <div className="p-6">
+        <div
+            style={{
+                width: '100vw',
+                height: '100vh',
+                position: 'relative',
+                backgroundColor: '#000',
+                overflow: 'hidden',
+                padding: '2rem',
+            }}
+        >
+            <Particles
+                particleColors={['#ffffff', '#ffffff']}
+                particleCount={200}
+                particleSpread={10}
+                speed={0.1}
+                particleBaseSize={100}
+                moveParticlesOnHover={true}
+                alphaParticles={false}
+                disableRotation={false}
+            />
 
-
-            <div id="skills-container" className="flex flex-col items-center gap-8">
-
-                {/* Programming Languages */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Programming Languages</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>Java</li>
-                        <li>JavaScript</li>
-                        <li>TypeScript</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>SCSS/SASS</li>
-                    </ul>
+            <div className="absolute inset-0 z-10 flex flex-col justify-center items-center gap-16 text-white overflow-y-auto">
+                {/* Languages */}
+                <div className="flex flex-col items-center w-full">
+                    <h2 className="section-title">Languages</h2>
+                    <div className="flex flex-wrap gap-8 justify-center px-4">
+                        <TechIcon src="/src/assets/tech-stack/javascript.png" alt="JavaScript" />
+                        <TechIcon src="/src/assets/tech-stack/java1.png" alt="Java" />
+                        <TechIcon src="/src/assets/tech-stack/ts.png" alt="TypeScript" />
+                        <TechIcon src="/src/assets/tech-stack/html.png" alt="HTML" />
+                        <TechIcon src="/src/assets/tech-stack/css.png" alt="CSS" />
+                    </div>
                 </div>
 
-                {/* Backend Development */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Backend Development</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>Spring Boot</li>
-                        <li>Jakarta Servlet</li>
-                        <li>JDBC</li>
-                        <li>Hibernate</li>
-                        <li>JPA</li>
-                        <li>RESTful APIs</li>
-                        <li>Apache Tomcat</li>
-                    </ul>
+                {/* Frameworks & Libraries */}
+                <div className="flex flex-col items-center w-full">
+                    <h2 className="section-title">Frameworks & Libraries</h2>
+                    <div className="flex flex-wrap gap-8 justify-center px-4">
+                        <TechIcon src="/src/assets/tech-stack/react.png" alt="React" />
+                        <TechIcon src="/src/assets/tech-stack/angular.png" alt="Angular" />
+                        <TechIcon src="/src/assets/tech-stack/spring.svg" alt="Spring Framework" />
+                        <TechIcon src="/src/assets/tech-stack/node.png" alt="Node.js" />
+                        <TechIcon src="/src/assets/tech-stack/bootstrap.png" alt="Bootstrap" />
+                        <TechIcon src="/src/assets/tech-stack/tailwind.png" alt="Tailwind CSS" />
+                    </div>
                 </div>
 
-                {/* Frontend Development */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Frontend Development</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>React.js</li>
-                        <li>Angular</li>
-                        <li>JavaFX</li>
-                    </ul>
-                </div>
-
-                {/* Full Stack & Server-side Development */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Full Stack & Server-side Development</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                    </ul>
+                {/* Tools & Platforms */}
+                <div className="flex flex-col items-center w-full">
+                    <h2 className="section-title">Tools & Platforms</h2>
+                    <div className="flex flex-wrap gap-8 justify-center px-4">
+                        <TechIcon src="/src/assets/tech-stack/github.png" alt="GitHub" />
+                        <TechIcon src="/src/assets/tech-stack/docker.png" alt="Docker" />
+                    </div>
                 </div>
 
                 {/* Databases */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Databases</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>MySQL</li>
-                        <li>MongoDB</li>
-                        <li>Firebase</li>
-                        <li>Firestore</li>
-                    </ul>
+                <div className="flex flex-col items-center w-full">
+                    <h2 className="section-title">Databases</h2>
+                    <div className="flex flex-wrap gap-8 justify-center px-4">
+                        <TechIcon src="/src/assets/tech-stack/mysql.png" alt="MySQL" />
+                        <TechIcon src="/src/assets/tech-stack/mongo.png" alt="MongoDB" />
+                        <TechIcon src="/src/assets/tech-stack/postgress.png" alt="PostgreSQL" />
+                    </div>
                 </div>
-
-                {/* Version Control & DevOps */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Version Control & DevOps</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>Git</li>
-                        <li>Git Flow</li>
-                        <li>Docker</li>
-                    </ul>
-                </div>
-
-                {/* Others */}
-                <div>
-                    <h2 className="font-bold text-lg mb-2">Other</h2>
-                    <ul className="list-disc pl-6 text-gray-700 text-sm">
-                        <li>Web APIs</li>
-                        <li>Microservices</li>
-                        <li>Multithreading</li>
-                        <li>Concurrency Programming</li>
-                        <li>Regex</li>
-                        <li>I/O and Networking</li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     );

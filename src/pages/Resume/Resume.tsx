@@ -1,7 +1,7 @@
 
 import './Resume.css'; // Add this file in your styles
 
-import profilePic  from "/src/assets/profile.jpeg";
+import profilePic  from "/src/assets/profile1.jpeg";
 
 function Resume() {
     return (
