@@ -1,7 +1,13 @@
 import './Home.css';
 import Aurora from "./Aurora.tsx";
 import profile from "/src/assets/profile2.jpeg";
-import Resume from "../Resume/Resume.tsx";
+import Contacts from "../Contacts/Contacts.tsx";
+import Skills from "../Skills/Skills.tsx";
+import Projects from "../Projects/Projects.tsx";
+import Services from "../Services/Services.tsx";
+import Experience from "../Experience/Experience.tsx";
+import { FloatingSocialMenu } from '../FloatingSocialMenu/FloatingSocialMenu.tsx';
+import BuyMeCoffeeButton from "../FloatingSocialMenu/BuyMeCoffeeButton.tsx";
 
 function Home() {
     return (
@@ -78,12 +84,20 @@ function Home() {
                         </div>
                     </div>
                 </div>
+
+                {/* Floating Social Icons FIRST */}
+                <FloatingSocialMenu />
+
+                {/* Buy Me a Coffee Button SECOND */}
+                <BuyMeCoffeeButton />
             </div>
 
-            {/* Resume Section */}
-            <div className="w-full bg-gray-900 text-white py-16">
-                <Resume />
-            </div>
+            {/* Sections */}
+            <Services />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Contacts />
         </>
     );
 }

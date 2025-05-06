@@ -1,0 +1,49 @@
+
+@tailwind utilities;
+
+@layer utilities {
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out both;
+    }
+
+    .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out both;
+    }
+}

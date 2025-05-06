@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, /*Stars*/ } from "@react-three/drei";
 import * as THREE from "three";
 
 // Import textures

@@ -1,0 +1,58 @@
+/* Make the container full screen */
+.services-container {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Card grid layout */
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Card style with hover effect */
+.service-card {
+    background-color: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 260px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover animation */
+.service-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Material icon styling */
+.service-icon {
+    display: inline-block;
+    font-size: 48px;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 1s ease-out forwards;
+}
