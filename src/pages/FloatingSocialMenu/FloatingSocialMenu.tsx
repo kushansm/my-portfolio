@@ -13,7 +13,7 @@ export function FloatingSocialMenu() {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="fixed right-6 bottom-6 z-50 flex flex-col items-center">
+        <div className="fixed right-6 bottom-6 z-40 flex flex-col items-center">
             {/* Social Icons Stack */}
             <div
                 className={`flex flex-col items-center transition-all duration-500 ease-in-out mb-2 ${
